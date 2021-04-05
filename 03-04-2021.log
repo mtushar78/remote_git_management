@@ -1,0 +1,278 @@
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: bin
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: boot
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: dev
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: etc
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: home
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: lib
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: lib32
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: lib64
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: libx32
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: lost+found
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: media
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: mnt
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: opt
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: proc
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: root
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: run
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: sbin
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: snap
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: srv
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: sys
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: tmp
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: usr
+
+INFO:root:2021-04-03 00:18:58.599052 INPUT: cd / && ls | OUTPUT: var
+
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: bin
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: boot
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: dev
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: etc
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: home
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: lib
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: lib32
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: lib64
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: libx32
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: lost+found
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: media
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: mnt
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: opt
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: proc
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: root
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: run
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: sbin
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: snap
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: srv
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: sys
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: tmp
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: usr
+
+INFO:root:2021-04-03 00:19:28.316606 INPUT: cd / && ls | OUTPUT: var
+
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: bin
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: boot
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: dev
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: etc
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: home
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: lib
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: lib32
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: lib64
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: libx32
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: lost+found
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: media
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: mnt
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: opt
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: proc
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: root
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: run
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: sbin
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: snap
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: srv
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: sys
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: tmp
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: usr
+
+INFO:root:2021-04-03 17:51:03.405305 INPUT: cd / && ls | OUTPUT: var
+
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: bin
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: boot
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: dev
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: etc
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: home
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: lib
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: lib32
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: lib64
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: libx32
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: lost+found
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: media
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: mnt
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: opt
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: proc
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: root
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: run
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: sbin
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: snap
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: srv
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: sys
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: tmp
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: usr
+
+INFO:root:2021-04-03 17:51:39.777319 INPUT: cd / && ls | OUTPUT: var
+
+INFO:root:None
+INFO:root:None
+INFO:root:DEmo Message
+INFO:root:DEmo Message
+INFO:root:DEmo Message
+INFO:root:100
+INFO:root:100
+INFO:root:{instance1.printObj()}
+INFO:root:100
+INFO:root:100
+INFO:paramiko.transport:Connected (version 2.0, client OpenSSH_8.2p1)
+INFO:paramiko.transport:Authentication (password) successful!
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: bin
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: boot
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: dev
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: etc
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: home
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: lib
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: lib32
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: lib64
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: libx32
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: lost+found
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: media
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: mnt
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: opt
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: proc
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: root
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: run
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: sbin
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: snap
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: srv
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: sys
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: tmp
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: usr
+
+INFO:root:2021-04-03 19:13:18.699226 INPUT: cd / && ls | OUTPUT: var
+
