@@ -67,8 +67,11 @@ class RemoteCon:
         self.client.close()
     def disconnect(self):
         self.client.close()
-        
-
+    def check_connection_status(self):
+        status = False
+        if self.client.get_transport() is not None:
+           status =  self.client.get_transport().is_active()   
+        return status;
 
 
 

@@ -137,14 +137,19 @@ class Ui_MainWindow(object):
     
     def connect(self):
         print("connect method is called")
-        if (self.flag == 0):
+        # if (self.flag == 0):
+        if not server_1.check_connection_status():
             self.cred_index = str(self.serverList.currentText())
             creds = configs[self.cred_index]['creds']
             server_1.connect(creds)
             self.dropDownCommand()
             self.con_label.setText("Connected")
             self.con_label.setStyleSheet("color: Green;")
-        self.flag = 1
+        else:
+            server_1.disconnect()
+            self.con_label.setText("Disonnected")
+            self.con_label.setStyleSheet("color: red;")
+            self.connect()
     def newWindow(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_SecondWindow()
