@@ -46,6 +46,7 @@ class RemoteCon:
             self.client.set_missing_host_key_policy(pm.AutoAddPolicy())
             self.client.connect(cred[0],cred[1],cred[2],cred[3])
             print ("Connected Successfully!")
+            logging.info(f"{time}: Successfully Connected to {cred[0]}")
         except AuthenticationException:
             print ("Authentication failed, please verify your credentials")
             logging.ERROR(f"{time}: Authentication failed, please verify your credentials")

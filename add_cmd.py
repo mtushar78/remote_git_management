@@ -9,7 +9,9 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from config import configs
+import json
+filePath = "config.json"
+
 
 class Ui_SecondWindow(object):
     global server_name
@@ -60,14 +62,23 @@ class Ui_SecondWindow(object):
         self.tag_label.setText(_translate("MainWindow", "Tag:"))
         self.cmd_label.setText(_translate("MainWindow", "Command:"))
         self.execute_btn.setText(_translate("MainWindow", "Execute"))
-        self.cancel_btn.setText(_translate("MainWindow", "Cancel"))
-
+        self.cancel_btn.setText(_translate("MainWindow", "Cancel"))     
+        
     def execute_cmd(self):
         tag = self.tag_lineEdit.text()
         cmd_text = self.cmd_textEdit.toPlainText()
-        # command = config[self.server_name]['commands'].append({tag: list(cmd)})
-        configs[self.server_name]['commands'][tag] = list(cmd_text.split(maxsplit=0))
-        print(configs)
+        
+        with open(filePath,"r") as fp:
+                information = json.load(fp)
+                cmnds = information[self.server_name]['commands']
+                print(cmnds)
+                cmnds.update({tag : [cmd_text]})
+            
+        with open(filePath, 'w') as fp:
+                json.dump(information, fp, indent=4)
+        self.tag_lineEdit.setText("")
+        self.cmd_textEdit.setText("")
+        
     def cancel(self):
         self.close()
         

@@ -15,8 +15,11 @@ from add_cmd import Ui_SecondWindow
 import git 
 server_1 = git.RemoteCon()
 global flag
-from config import configs
-# commands = (["cd /usr/ && ls && python3 --version"])
+import json
+
+f = open("config.json")
+configs = json.load(f)
+
 
 class Ui_MainWindow(object):
     flag=1
@@ -136,7 +139,6 @@ class Ui_MainWindow(object):
       
     
     def connect(self):
-        print("connect method is called")
         # if (self.flag == 0):
         if not server_1.check_connection_status():
             self.cred_index = str(self.serverList.currentText())

@@ -11,6 +11,12 @@ configs = {
 						'pull': ['cd /opt && ls'],
 						'branch': ['cd /opt/lampp/htdocs/remit/ && git branch']
 						}		
-					}
+					},
+    "172.104.185.128":{"creds":["172.104.185.128", 22, "root","diit@321#"],
+                       "commands":{
+                           "pull":["cd /var/ && ls"],
+                           "push": ["cd /var/ && python3 --version"]
+                           }
+                       }
     }
 
