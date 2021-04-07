@@ -15,6 +15,7 @@ import logging
 import sys
 import os
 from config import configs
+import socket
 
 time = datetime.now()
 today = date.today()
@@ -42,24 +43,34 @@ class RemoteCon:
     client=pm.SSHClient()
     
     def connect(self, cred):
+        status = 0
+        msg = ""
         try: 
             self.client.set_missing_host_key_policy(pm.AutoAddPolicy())
             self.client.connect(cred[0],cred[1],cred[2],cred[3])
-            print ("Connected Successfully!")
+            msg = "Connected successfully!"
+            status = 1
             logging.info(f"{time}: Successfully Connected to {cred[0]}")
         except AuthenticationException:
+            msg = "Authentication Error!"
             print ("Authentication failed, please verify your credentials")
             logging.ERROR(f"{time}: Authentication failed, please verify your credentials")
         except SSHException as sshException:
+            msg = "Unable to establish SSH connection!"
             print ("Unable to establish SSH connection: %s" % sshException)
             logging.ERROR(f"{time}: Unable to establish SSH connection: {sshException}")
-            
+        except (pm.SSHException, socket.error) as se:
+            msg = "Connection timeout!"
+        except:
+            msg = "Connection timeout!"
+        
+        return [status,msg]
     def execute_commands(self, commands: List[str]):
         for cmd in commands:
             stdin, stdout, stderr = self.client.exec_command(cmd)
             stdout.channel.recv_exit_status()
             response = stdout.readlines()
-            print("response:", response)
+            # print("response:", response)
             for line in response:
                 logging.info(f"{time} INPUT: {cmd} | OUTPUT: {line}")
             

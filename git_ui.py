@@ -17,15 +17,22 @@ server_1 = git.RemoteCon()
 global flag
 import json
 
-f = open("config.json")
-configs = json.load(f)
-
 
 class Ui_MainWindow(object):
     flag=1
     cred_index = ""
+    configs={}
+    
     def __init__(self):
         self.flag=0
+        self.load_json_config()
+        
+    def load_json_config(self):
+        f = open("config.json")
+        self.configs = json.load(f)
+        print(self.configs)
+    
+    
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setFixedSize(492, 520)
@@ -48,6 +55,8 @@ class Ui_MainWindow(object):
         self.runButton = QtWidgets.QPushButton(self.centralwidget)
         self.runButton.setGeometry(QtCore.QRect(100, 130, 171, 23))
         self.runButton.setObjectName("runButton")
+        self.runButton.setEnabled(False)
+        
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(30, 30, 61, 16))
         self.label.setObjectName("label")
@@ -60,7 +69,7 @@ class Ui_MainWindow(object):
         self.con_status.setObjectName("con_status")
         
         self.con_label = QtWidgets.QLabel(self.centralwidget)
-        self.con_label.setGeometry(QtCore.QRect(120, 460, 81, 16))
+        self.con_label.setGeometry(QtCore.QRect(120, 460, 250, 16))
         self.con_label.setObjectName("con_label")
         self.con_label.setText("Disconnected")
         self.con_label.setStyleSheet("color: red;")
@@ -74,10 +83,12 @@ class Ui_MainWindow(object):
         self.commandList = QtWidgets.QComboBox(self.verticalLayoutWidget_2)
         self.commandList.setObjectName("commandList")
         self.verticalLayout_2.addWidget(self.commandList)
+        
         self.addCommandBtn = QtWidgets.QPushButton(self.centralwidget)
         self.addCommandBtn.setGeometry(QtCore.QRect(300, 90, 101, 23))
         self.addCommandBtn.setObjectName("addCommandBtn")
         self.addCommandBtn.clicked.connect(self.newWindow)
+        self.addCommandBtn.setEnabled(False)
         
         self.check_con = QtWidgets.QPushButton(self.centralwidget)
         self.check_con.setGeometry(QtCore.QRect(300, 30, 101, 23))
@@ -114,15 +125,17 @@ class Ui_MainWindow(object):
         self.textEdit.setPlainText(res)
     def dropDown(self): #ip lists for drow down
         url = []
-        for index,item in configs.items():
+        for index,item in self.configs.items():
             url.append(index) 
         return url
     def dropDownCommand(self):#ip lists for drow down
         url = []
-        for index,item in configs[self.cred_index]['commands'].items():
+        for index,item in self.configs[self.cred_index]['commands'].items():
             url.append(index) 
         self.commandList.clear()
         self.commandList.addItems(url)
+        self.addCommandBtn.setEnabled(True)
+        self.runButton.setEnabled(True)
     def listToString(self,s): 
         # initialize an empty string
         str1 = ""       
@@ -133,7 +146,7 @@ class Ui_MainWindow(object):
         return str1
     def showResut(self): #command execution
         selected = self.commandList.currentText()
-        command = configs[self.cred_index]['commands'][selected]
+        command = self.configs[self.cred_index]['commands'][selected]
         s = server_1.execute_commands(command)
         return self.listToString(s)
       
@@ -142,13 +155,25 @@ class Ui_MainWindow(object):
         # if (self.flag == 0):
         if not server_1.check_connection_status():
             self.cred_index = str(self.serverList.currentText())
-            creds = configs[self.cred_index]['creds']
-            server_1.connect(creds)
-            self.dropDownCommand()
-            self.con_label.setText("Connected")
-            self.con_label.setStyleSheet("color: Green;")
+            creds = self.configs[self.cred_index]['creds']
+            x = server_1.connect(creds)
+            if x[0]==1:
+                self.dropDownCommand()
+                self.con_label.setText(x[1])
+                self.con_label.setStyleSheet("color: Green;")
+            else:
+                self.commandList.clear()
+                self.addCommandBtn.setEnabled(False)
+                self.runButton.setEnabled(False)
+                self.textEdit.setPlainText("")
+                self.con_label.setText(x[1])
+                self.con_label.setStyleSheet("color: red;")
         else:
             server_1.disconnect()
+            self.runButton.setEnabled(False)
+            self.addCommandBtn.setEnabled(False)
+            self.commandList.clear()
+            self.textEdit.setPlainText("")
             self.con_label.setText("Disonnected")
             self.con_label.setStyleSheet("color: red;")
             self.connect()

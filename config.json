@@ -60,6 +60,12 @@
             ],
             "push": [
                 "cd /var/ && python3 --version"
+            ],
+            "test": [
+                "hghf fhfg"
+            ],
+            "gfdg ": [
+                "fghd gfdg"
             ]
         }
     }

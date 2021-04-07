@@ -9,7 +9,9 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import json
+import json,sys,os
+
+
 filePath = "config.json"
 
 
@@ -41,8 +43,8 @@ class Ui_SecondWindow(object):
         self.cancel_btn = QtWidgets.QPushButton(self.centralwidget)
         self.cancel_btn.setGeometry(QtCore.QRect(170, 260, 75, 23))
         self.cancel_btn.setObjectName("cancel_btn")
-        self.cancel_btn.clicked.connect(self.cancel)
-        self.cancel_btn.hide()
+        self.cancel_btn.clicked.connect(lambda:MainWindow.destroy())
+        # self.cancel_btn.hide()
         
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -59,6 +61,7 @@ class Ui_SecondWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Add Custom Commands"))
+        MainWindow.setWindowFlags(MainWindow.windowFlags() & ~QtCore.Qt.WindowMaximizeButtonHint)
         self.tag_label.setText(_translate("MainWindow", "Tag:"))
         self.cmd_label.setText(_translate("MainWindow", "Command:"))
         self.execute_btn.setText(_translate("MainWindow", "Execute"))
@@ -78,9 +81,9 @@ class Ui_SecondWindow(object):
                 json.dump(information, fp, indent=4)
         self.tag_lineEdit.setText("")
         self.cmd_textEdit.setText("")
+        os.execv(sys.executable, ['python'] + sys.argv)
+
         
-    def cancel(self):
-        self.close()
         
 if __name__ == "__main__":
     import sys
