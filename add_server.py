@@ -77,6 +77,7 @@ class Ui_AddServerWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        
         self.title_label.setText(_translate("MainWindow", "Add New Server For "))
         self.label.setText(_translate("MainWindow", "Server Credentials"))
         self.ip_label.setText(_translate("MainWindow", "Server\'s IP:"))

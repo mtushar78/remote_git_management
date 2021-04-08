@@ -17,7 +17,7 @@ import os
 from config import configs
 import socket
 
-time = datetime.now()
+current_time = datetime.now()
 today = date.today()
 today = today.strftime("%d-%m-%Y")
 # file_location = ["D:\\projects\\remote git management\\",
@@ -50,15 +50,15 @@ class RemoteCon:
             self.client.connect(cred[0],cred[1],cred[2],cred[3])
             msg = "Connected successfully!"
             status = 1
-            logging.info(f"{time}: Successfully Connected to {cred[0]}")
+            logging.info("%s: Successfully Connected to %s",current_time, cred[0])
         except AuthenticationException:
             msg = "Authentication Error!"
             print ("Authentication failed, please verify your credentials")
-            logging.ERROR(f"{time}: Authentication failed, please verify your credentials")
+            logging.error("%s: Authentication failed, please verify your credentials", current_time)
         except SSHException as sshException:
             msg = "Unable to establish SSH connection!"
             print ("Unable to establish SSH connection: %s" % sshException)
-            logging.ERROR(f"{time}: Unable to establish SSH connection: {sshException}")
+            logging.error(f"{current_time}: Unable to establish SSH connection: {sshException}")
         except (pm.SSHException, socket.error) as se:
             msg = "Connection timeout!"
         except:
@@ -72,7 +72,7 @@ class RemoteCon:
             response = stdout.readlines()
             # print("response:", response)
             for line in response:
-                logging.info(f"{time} INPUT: {cmd} | OUTPUT: {line}")
+                logging.info(f"{current_time} INPUT: {cmd} | OUTPUT: {line}")
             
             return response
     def __del__(self):

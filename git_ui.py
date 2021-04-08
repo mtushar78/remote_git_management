@@ -126,6 +126,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Git System Management"))
+        MainWindow.setWindowIcon(QtGui.QIcon('logo.jpg'))
         MainWindow.setWindowFlags(MainWindow.windowFlags() & ~QtCore.Qt.WindowMaximizeButtonHint)
     
         self.runButton.setText(_translate("MainWindow", "Run"))

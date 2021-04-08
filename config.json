@@ -26,6 +26,9 @@
             "commands": {
                 "py version": [
                     "python3 --version"
+                ],
+                "branch": [
+                    "Test Test Test"
                 ]
             }
         },
