@@ -1,72 +1,76 @@
 {
-    "172.31.2.3": {
-        "creds": [
-            "172.31.2.3",
-            8822,
-            "root",
-            "Qpay@Nbl2018"
-        ],
-        "commands": {
-            "pull": [
-                "cd / && ls"
+    "uat": {
+        "172.31.2.3": {
+            "creds": [
+                "172.31.2.3",
+                8822,
+                "root",
+                "Qpay@Nbl2018"
             ],
-            "push": [
-                "cd /var/www/html/uat && git branch"
-            ]
+            "commands": {
+                "pull": [
+                    "cd / && ls"
+                ],
+                "push": [
+                    "cd /var/www/html/uat && git branch"
+                ]
+            }
+        },
+        "172.104.185.128": {
+            "creds": [
+                "172.104.185.128",
+                22,
+                "root",
+                "diit@321#"
+            ],
+            "commands": {
+                "py version": [
+                    "python3 --version"
+                ]
+            }
+        },
+        "121.14.25.35": {
+            "creds": [
+                "121.14.25.35",
+                22,
+                "root",
+                "tusafsmdnfju4"
+            ],
+            "commands": {}
         }
     },
-    "172.31.2.36": {
-        "creds": [
-            "172.31.2.36",
-            8822,
-            "root",
-            "quickpay2@dc"
-        ],
-        "commands": {
-            "pull": [
-                "cd /var/ && ls"
+    "live": {
+        "172.31.2.36": {
+            "creds": [
+                "172.31.2.36",
+                8822,
+                "root",
+                "quickpay2@dc"
             ],
-            "branch": [
-                "cd /opt/ && ls"
-            ]
-        }
-    },
-    "172.31.2.35": {
-        "creds": [
-            "172.31.2.35",
-            22,
-            "root",
-            "cDRtGV@2021"
-        ],
-        "commands": {
-            "pull": [
-                "cd /opt && ls"
+            "commands": {
+                "pull": [
+                    "cd /var/ && ls"
+                ],
+                "branch": [
+                    "cd /opt/ && ls"
+                ]
+            }
+        },
+        "172.31.2.35": {
+            "creds": [
+                "172.31.2.35",
+                22,
+                "root",
+                "cDRtGV@2021"
             ],
-            "branch": [
-                "cd /opt/lampp/htdocs/remit/ && git branch"
-            ]
-        }
-    },
-    "172.104.185.128": {
-        "creds": [
-            "172.104.185.128",
-            22,
-            "root",
-            "diit@321#"
-        ],
-        "commands": {
-            "pull": [
-                "cd /var/ && ls"
-            ],
-            "push": [
-                "cd /var/ && python3 --version"
-            ],
-            "test": [
-                "hghf fhfg"
-            ],
-            "gfdg ": [
-                "fghd gfdg"
-            ]
+            "commands": {
+                "pull": [
+                    "cd /opt && ls"
+                ],
+                "branch": [
+                    "cd /opt/lampp/htdocs/remit/ && git branch"
+                ]
+            }
         }
     }
 }

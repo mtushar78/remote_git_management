@@ -12,6 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from typing import List
 from add_cmd import Ui_SecondWindow
+from add_server import Ui_AddServerWindow
 import git 
 server_1 = git.RemoteCon()
 global flag
@@ -20,80 +21,93 @@ import json
 
 class Ui_MainWindow(object):
     flag=1
+    env_index=""
     cred_index = ""
     configs={}
     
     def __init__(self):
         self.flag=0
         self.load_json_config()
-        
     def load_json_config(self):
         f = open("config.json")
         self.configs = json.load(f)
-        print(self.configs)
     
     
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.setFixedSize(492, 520)
+        MainWindow.setFixedSize(481, 568)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(99, 9, 171, 61))
-        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.serverList = QtWidgets.QComboBox(self.verticalLayoutWidget)
-        self.serverList.setObjectName("serverList")
-        self.serverList.addItems(self.dropDown()) #calling dropDown method
+        # self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
+        # self.verticalLayoutWidget.setGeometry(QtCore.QRect(99, 9, 171, 61))
+        # self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
+        # self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
+        # self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        # self.verticalLayout.setObjectName("verticalLayout")
+        self.env_list = QtWidgets.QComboBox(self.centralwidget)
+        self.env_list.setGeometry(QtCore.QRect(100, 40, 169, 20))
+        self.env_list.setObjectName("env_list")
+        self.env_list.addItems(self.dropDownENV())
+        self.env_list.currentIndexChanged.connect(self.onIndexChanged_ENV)
         
-        self.verticalLayout.addWidget(self.serverList)
+        self.serverList = QtWidgets.QComboBox(self.centralwidget)
+        self.serverList.setGeometry(QtCore.QRect(100, 80, 169, 20))
+        self.serverList.setObjectName("serverList")
+        self.serverList.addItems(self.dropDownSERVER()) #calling dropDown method
+        
+        self.commandList = QtWidgets.QComboBox(self.centralwidget)
+        self.commandList.setGeometry(QtCore.QRect(100, 130, 169, 20))
+        self.commandList.setObjectName("commandList")
+        
+        
         self.textEdit = QtWidgets.QTextBrowser(self.centralwidget)
-        self.textEdit.setGeometry(QtCore.QRect(10, 180, 471, 271))
+        self.textEdit.setGeometry(QtCore.QRect(1, 200, 479, 271))
         self.textEdit.setObjectName("textEdit")
         self.runButton = QtWidgets.QPushButton(self.centralwidget)
-        self.runButton.setGeometry(QtCore.QRect(100, 130, 171, 23))
+        self.runButton.setGeometry(QtCore.QRect(100, 170, 171, 23))
         self.runButton.setObjectName("runButton")
         self.runButton.setEnabled(False)
         
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(30, 30, 61, 16))
-        self.label.setObjectName("label")
-        self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(30, 90, 61, 16))
-        self.label_3.setObjectName("label_3")
-        
-        self.con_status = QtWidgets.QLabel(self.centralwidget)
-        self.con_status.setGeometry(QtCore.QRect(10, 460, 141, 16))
-        self.con_status.setObjectName("con_status")
-        
-        self.con_label = QtWidgets.QLabel(self.centralwidget)
-        self.con_label.setGeometry(QtCore.QRect(120, 460, 250, 16))
-        self.con_label.setObjectName("con_label")
-        self.con_label.setText("Disconnected")
-        self.con_label.setStyleSheet("color: red;")
-        
-        self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(100, 70, 171, 61))
-        self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
-        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.commandList = QtWidgets.QComboBox(self.verticalLayoutWidget_2)
-        self.commandList.setObjectName("commandList")
-        self.verticalLayout_2.addWidget(self.commandList)
-        
         self.addCommandBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.addCommandBtn.setGeometry(QtCore.QRect(300, 90, 101, 23))
+        self.addCommandBtn.setGeometry(QtCore.QRect(300, 130, 151, 23))
         self.addCommandBtn.setObjectName("addCommandBtn")
         self.addCommandBtn.clicked.connect(self.newWindow)
         self.addCommandBtn.setEnabled(False)
         
         self.check_con = QtWidgets.QPushButton(self.centralwidget)
-        self.check_con.setGeometry(QtCore.QRect(300, 30, 101, 23))
+        self.check_con.setGeometry(QtCore.QRect(300, 80, 71, 23))
         self.check_con.setObjectName("check_con")
         self.check_con.clicked.connect(self.connect)
+        
+        self.add_new_connection = QtWidgets.QPushButton(self.centralwidget)
+        self.add_new_connection.setGeometry(QtCore.QRect(380, 80, 71, 23))
+        self.add_new_connection.setObjectName("add_new_connection")
+        self.add_new_connection.clicked.connect(self.addNewconnection)
+        
+        self.refresh = QtWidgets.QPushButton(self.centralwidget)
+        self.refresh.setGeometry(QtCore.QRect(300, 170, 151, 23))
+        self.refresh.setObjectName("refresh")
+        self.refresh.clicked.connect(self.refresh_func)
+        
+        self.server_label = QtWidgets.QLabel(self.centralwidget)
+        self.server_label.setGeometry(QtCore.QRect(30, 80, 61, 16))
+        self.server_label.setObjectName("server_label")
+        self.command_label = QtWidgets.QLabel(self.centralwidget)
+        self.command_label.setGeometry(QtCore.QRect(30, 130, 61, 16))
+        self.command_label.setObjectName("command_label")
+        self.env_label = QtWidgets.QLabel(self.centralwidget)
+        self.env_label.setGeometry(QtCore.QRect(30, 40, 61, 16))
+        self.env_label.setObjectName("env_label")
+        
+        self.con_status = QtWidgets.QLabel(self.centralwidget)
+        self.con_status.setGeometry(QtCore.QRect(10, 500, 101, 20))
+        self.con_status.setObjectName("con_status")
+        
+        self.con_label = QtWidgets.QLabel(self.centralwidget)
+        self.con_label.setGeometry(QtCore.QRect(120, 500, 251, 16))
+        self.con_label.setObjectName("con_label")
+        self.con_label.setText("Disconnected")
+        self.con_label.setStyleSheet("color: red;")
         
         
         MainWindow.setCentralWidget(self.centralwidget)
@@ -115,27 +129,50 @@ class Ui_MainWindow(object):
         MainWindow.setWindowFlags(MainWindow.windowFlags() & ~QtCore.Qt.WindowMaximizeButtonHint)
     
         self.runButton.setText(_translate("MainWindow", "Run"))
-        self.label.setText(_translate("MainWindow", "Server:"))
-        self.label_3.setText(_translate("MainWindow", "Command:"))
+        self.env_label.setText(_translate("MainWindow", "Environment:"))
+        self.server_label.setText(_translate("MainWindow", "Server:"))
+        self.command_label.setText(_translate("MainWindow", "Command:"))
         self.con_status.setText(_translate("MainWindow", "Connection Status:"))
         self.addCommandBtn.setText(_translate("MainWindow", "Add Command"))
-        self.check_con.setText(_translate("MainWindow", "Check Connection"))
+        self.check_con.setText(_translate("MainWindow", "Connect"))
+        self.add_new_connection.setText(_translate("MainWindow", "Add New"))
+        self.refresh.setText(_translate("MainWindow", "Refresh"))
     def b1_clicked(self): # when RUN button is clicked
         res = self.showResut()
         self.textEdit.setPlainText(res)
-    def dropDown(self): #ip lists for drow down
+    def dropDownENV(self): #ip lists for drow down
         url = []
         for index,item in self.configs.items():
             url.append(index) 
         return url
+    def dropDownSERVER(self):  
+        selected = self.env_list.currentText()
+        url = []
+        if selected != '':
+            self.serverList.clear()
+            for index,item in self.configs[selected].items():
+                url.append(index)     
+        return url
+    
+    def onIndexChanged_ENV(self):  
+        selected = self.env_list.currentText()
+        self.env_index = selected
+        if selected != '':
+            self.serverList.clear()
+            url = []
+            for index,item in self.configs[selected].items():
+                url.append(index)     
+            self.serverList.addItems(url)
+    
     def dropDownCommand(self):#ip lists for drow down
         url = []
-        for index,item in self.configs[self.cred_index]['commands'].items():
-            url.append(index) 
-        self.commandList.clear()
-        self.commandList.addItems(url)
-        self.addCommandBtn.setEnabled(True)
-        self.runButton.setEnabled(True)
+        if (self.env_index != '' and self.cred_index !=''):
+            for index,item in self.configs[self.env_index][self.cred_index]['commands'].items():
+                url.append(index) 
+            self.commandList.clear()
+            self.commandList.addItems(url)
+            self.addCommandBtn.setEnabled(True)
+            self.runButton.setEnabled(True)
     def listToString(self,s): 
         # initialize an empty string
         str1 = ""       
@@ -146,7 +183,7 @@ class Ui_MainWindow(object):
         return str1
     def showResut(self): #command execution
         selected = self.commandList.currentText()
-        command = self.configs[self.cred_index]['commands'][selected]
+        command = self.configs[self.env_index][self.cred_index]['commands'][selected]
         s = server_1.execute_commands(command)
         return self.listToString(s)
       
@@ -154,8 +191,9 @@ class Ui_MainWindow(object):
     def connect(self):
         # if (self.flag == 0):
         if not server_1.check_connection_status():
+            self.env_index = str(self.env_list.currentText())            
             self.cred_index = str(self.serverList.currentText())
-            creds = self.configs[self.cred_index]['creds']
+            creds = self.configs[self.env_index][self.cred_index]['creds']
             x = server_1.connect(creds)
             if x[0]==1:
                 self.dropDownCommand()
@@ -180,8 +218,26 @@ class Ui_MainWindow(object):
     def newWindow(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_SecondWindow()
-        self.ui.setupUi(self.window, self.cred_index)
+        self.ui.setupUi(self.window, self.env_index, self.cred_index)
         self.window.show()
+        
+    def addNewconnection(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_AddServerWindow()
+        self.env_index = self.env_list.currentText()
+        self.ui.setupUi(self.window, self.env_index)
+        self.window.show()
+    def refresh_func(self):
+        self.load_json_config()
+        selected = self.env_list.currentText()
+        if selected != '':
+            self.serverList.clear()
+        url = []
+        for index,item in self.configs[selected].items():
+            url.append(index)  
+        self.serverList.addItems(url)
+        self.dropDownCommand()
+    
         
     
     

@@ -16,9 +16,10 @@ filePath = "config.json"
 
 
 class Ui_SecondWindow(object):
-    global server_name
-    def setupUi(self, MainWindow, server_name):
+    server_name, env = "",""
+    def setupUi(self, MainWindow, env, server_name):
         self.server_name = server_name
+        self.env = env
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(336, 343)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -73,7 +74,7 @@ class Ui_SecondWindow(object):
         
         with open(filePath,"r") as fp:
                 information = json.load(fp)
-                cmnds = information[self.server_name]['commands']
+                cmnds = information[self.env][self.server_name]['commands']
                 print(cmnds)
                 cmnds.update({tag : [cmd_text]})
             
@@ -81,7 +82,6 @@ class Ui_SecondWindow(object):
                 json.dump(information, fp, indent=4)
         self.tag_lineEdit.setText("")
         self.cmd_textEdit.setText("")
-        os.execv(sys.executable, ['python'] + sys.argv)
 
         
         
