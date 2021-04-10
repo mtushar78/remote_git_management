@@ -24,20 +24,41 @@
                 "diit@321#"
             ],
             "commands": {
-                "py version": [
+                "version": [
                     "python3 --version"
                 ],
-                "branch": [
-                    "Test Test Test"
+                "Files and folders": [
+                    "cd / && ls"
+                ],
+                "Ping": [
+                    "cd / && ping google.com -c 5"
                 ]
             }
         },
-        "121.14.25.35": {
+        "10.0.120.124": {
             "creds": [
-                "121.14.25.35",
-                22,
+                "10.0.120.124",
+                443,
+                "Tusahrvdr",
+                "gfd132sd45"
+            ],
+            "commands": {}
+        },
+        "192.168.0.125": {
+            "creds": [
+                "192.168.0.125",
+                1433,
                 "root",
-                "tusafsmdnfju4"
+                "Admin@123454"
+            ],
+            "commands": {}
+        },
+        "172.31.2.54": {
+            "creds": [
+                "172.31.2.54",
+                125,
+                "Tusharar",
+                "sdafsad3q5346"
             ],
             "commands": {}
         }
@@ -74,6 +95,15 @@
                     "cd /opt/lampp/htdocs/remit/ && git branch"
                 ]
             }
+        },
+        "10.2.0.124": {
+            "creds": [
+                "10.2.0.124",
+                443,
+                "Tusahr",
+                "Gsgsg3wte"
+            ],
+            "commands": {}
         }
     }
 }

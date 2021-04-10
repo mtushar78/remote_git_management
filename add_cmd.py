@@ -21,7 +21,7 @@ class Ui_SecondWindow(object):
         self.server_name = server_name
         self.env = env
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(336, 343)
+        MainWindow.setFixedSize(336, 343)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tag_lineEdit = QtWidgets.QLineEdit(self.centralwidget)

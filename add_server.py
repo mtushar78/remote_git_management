@@ -18,7 +18,7 @@ class Ui_AddServerWindow(object):
         self.env = env
         
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(400, 346)
+        MainWindow.setFixedSize(400, 360)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.title_label = QtWidgets.QLabel(self.centralwidget)
@@ -41,6 +41,11 @@ class Ui_AddServerWindow(object):
         self.port_label = QtWidgets.QLabel(self.centralwidget)
         self.port_label.setGeometry(QtCore.QRect(20, 140, 71, 16))
         self.port_label.setObjectName("port_label")
+        self.status_label = QtWidgets.QLabel(self.centralwidget)
+        self.status_label.setGeometry(QtCore.QRect(120, 290, 191, 16))
+        self.status_label.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.status_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.status_label.setObjectName("status_label")
         
         self.ip_lineEdit = QtWidgets.QLineEdit(self.centralwidget)
         self.ip_lineEdit.setGeometry(QtCore.QRect(170, 100, 181, 20))
@@ -54,6 +59,11 @@ class Ui_AddServerWindow(object):
         self.pass_lineEdit = QtWidgets.QLineEdit(self.centralwidget)
         self.pass_lineEdit.setGeometry(QtCore.QRect(170, 220, 181, 20))
         self.pass_lineEdit.setObjectName("pass_lineEdit")
+        self.flag_label = QtWidgets.QLabel(self.centralwidget)
+        self.flag_label.setGeometry(QtCore.QRect(0, 300, 401, 16))
+        self.flag_label.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.flag_label.setAlignment(QtCore.Qt.AlignCenter)
+        self.flag_label.setObjectName("flag_label")
         
         
         
@@ -85,6 +95,7 @@ class Ui_AddServerWindow(object):
         self.user_label.setText(_translate("MainWindow", "User:"))
         self.port_label.setText(_translate("MainWindow", "Port:"))
         self.cred_btn.setText(_translate("MainWindow", "Submit"))
+  
     def onSubmitClicked(self):
         ip = self.ip_lineEdit.text()
         port = int(self.port_lineEdit.text())
@@ -103,6 +114,29 @@ class Ui_AddServerWindow(object):
             
         with open(filePath, 'w') as fp:
                 json.dump(information, fp, indent=4)
+        
+        self.isInsertedSuccessfully()
+        
+    def isInsertedSuccessfully(self):
+        ip = self.ip_lineEdit.text()
+        f = open("config.json")
+        data = json.load(f)
+        x = []
+        is_inserted = False
+        for index, item in data[self.env].items():
+           
+            if index == ip :
+                 self.flag_label.setText("Data inserted successfully!")
+                 self.flag_label.setStyleSheet("color: green;")
+                 self.ip_lineEdit.clear()
+                 self.port_lineEdit.clear()
+                 self.user_lineEdit.clear()
+                 self.pass_lineEdit.clear()
+                 is_inserted = True
+        
+        if is_inserted == False :
+            self.flag_label.setText("Data insertion failed")
+            self.flag_label.setStyleSheet("color: red;")
         
         
         

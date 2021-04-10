@@ -47,7 +47,7 @@ class RemoteCon:
         msg = ""
         try: 
             self.client.set_missing_host_key_policy(pm.AutoAddPolicy())
-            self.client.connect(cred[0],cred[1],cred[2],cred[3])
+            self.client.connect(cred[0],cred[1],cred[2],cred[3], timeout=30)
             msg = "Connected successfully!"
             status = 1
             logging.info("%s: Successfully Connected to %s",current_time, cred[0])
@@ -67,7 +67,12 @@ class RemoteCon:
         return [status,msg]
     def execute_commands(self, commands: List[str]):
         for cmd in commands:
-            stdin, stdout, stderr = self.client.exec_command(cmd)
+            try: 
+                stdin, stdout, stderr = self.client.exec_command(cmd,timeout=30)
+                
+            except socket.timeout:
+                print('socket Timeout')
+                response = "Socket Timeout"
             stdout.channel.recv_exit_status()
             response = stdout.readlines()
             # print("response:", response)

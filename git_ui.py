@@ -38,12 +38,6 @@ class Ui_MainWindow(object):
         MainWindow.setFixedSize(481, 568)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        # self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        # self.verticalLayoutWidget.setGeometry(QtCore.QRect(99, 9, 171, 61))
-        # self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
-        # self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
-        # self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        # self.verticalLayout.setObjectName("verticalLayout")
         self.env_list = QtWidgets.QComboBox(self.centralwidget)
         self.env_list.setGeometry(QtCore.QRect(100, 40, 169, 20))
         self.env_list.setObjectName("env_list")
@@ -84,10 +78,10 @@ class Ui_MainWindow(object):
         self.add_new_connection.setObjectName("add_new_connection")
         self.add_new_connection.clicked.connect(self.addNewconnection)
         
-        self.refresh = QtWidgets.QPushButton(self.centralwidget)
-        self.refresh.setGeometry(QtCore.QRect(300, 170, 151, 23))
-        self.refresh.setObjectName("refresh")
-        self.refresh.clicked.connect(self.refresh_func)
+        self.reload = QtWidgets.QPushButton(self.centralwidget)
+        self.reload.setGeometry(QtCore.QRect(300, 170, 151, 23))
+        self.reload.setObjectName("reload")
+        self.reload.clicked.connect(self.reload_func)
         
         self.server_label = QtWidgets.QLabel(self.centralwidget)
         self.server_label.setGeometry(QtCore.QRect(30, 80, 61, 16))
@@ -125,7 +119,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Git System Management"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "SSH Management Tool"))
         MainWindow.setWindowIcon(QtGui.QIcon('logo.jpg'))
         MainWindow.setWindowFlags(MainWindow.windowFlags() & ~QtCore.Qt.WindowMaximizeButtonHint)
     
@@ -137,7 +131,7 @@ class Ui_MainWindow(object):
         self.addCommandBtn.setText(_translate("MainWindow", "Add Command"))
         self.check_con.setText(_translate("MainWindow", "Connect"))
         self.add_new_connection.setText(_translate("MainWindow", "Add New"))
-        self.refresh.setText(_translate("MainWindow", "Refresh"))
+        self.reload.setText(_translate("MainWindow", "Reload"))
     def b1_clicked(self): # when RUN button is clicked
         res = self.showResut()
         self.textEdit.setPlainText(res)
@@ -228,7 +222,7 @@ class Ui_MainWindow(object):
         self.env_index = self.env_list.currentText()
         self.ui.setupUi(self.window, self.env_index)
         self.window.show()
-    def refresh_func(self):
+    def reload_func(self):
         self.load_json_config()
         selected = self.env_list.currentText()
         if selected != '':
@@ -237,8 +231,18 @@ class Ui_MainWindow(object):
         for index,item in self.configs[selected].items():
             url.append(index)  
         self.serverList.addItems(url)
-        self.dropDownCommand()
-    
+        self.commandList.clear()
+        self.textEdit.clear()
+        self.addCommandBtn.setEnabled(False)
+        self.runButton.setEnabled(False)
+        self.disconnect()
+    def disconnect(self):
+        if server_1.check_connection_status():
+            server_1.disconnect()
+        
+        self.con_label.setText("Disconnected")
+        self.con_label.setStyleSheet("color: red;")
+        
         
     
     
